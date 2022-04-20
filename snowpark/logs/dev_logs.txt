@@ -1,0 +1,56 @@
+(base) josh@Joshs-iMac snowpark % /usr/local/opt/sbt@0.13/bin/sbt 
+[info] Loading project definition from /Users/josh/Documents/PattersonConsulting/workspaces/vertical_use_cases/finsrv/credit_card_fraud_detection/snowpark/project
+[info] Set current project to cc-txn-data-eng (in build file:/Users/josh/Documents/PattersonConsulting/workspaces/vertical_use_cases/finsrv/credit_card_fraud_detection/snowpark/)
+> run
+[info] Compiling 1 Scala source to /Users/josh/Documents/PattersonConsulting/workspaces/vertical_use_cases/finsrv/credit_card_fraud_detection/snowpark/target/scala-2.12/classes...
+[info] Running FeatureEngineerTransactions 
+
+=== Creating the session ===
+
+[run-main-0] INFO com.snowflake.snowpark.Session - Closing stderr and redirecting to stdout
+[run-main-0] INFO com.snowflake.snowpark.Session - Done closing stderr and redirecting to stdout
+[run-main-0] INFO com.snowflake.snowpark.internal.ParameterUtils - set JDBC client memory limit to 10240
+[run-main-0] INFO com.snowflake.snowpark.Session - Snowpark Session information: {
+ "snowpark.version" : "0.11.0",
+ "java.version" : "1.8.0_312",
+ "scala.version" : "2.12.13",
+ "jdbc.session.id" : "22095248801435666",
+ "os.name" : "Mac OS X",
+ "jdbc.version" : "3.13.10",
+ "snowpark.library" : "/Users/josh/.ivy2/cache/com.snowflake/snowpark/jars/snowpark-0.11.0.jar",
+ "scala.library" : "/Users/josh/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.13.jar",
+ "jdbc.library" : "/Users/josh/.ivy2/cache/net.snowflake/snowflake-jdbc/jars/snowflake-jdbc-3.13.10.jar"
+}
+[run-main-0] INFO com.snowflake.snowpark.internal.ServerConnection - Execute query [queryID: 01a24fe6-0501-bd1a-004e-7f830006e452]  SELECT  *  FROM ( SELECT  *  FROM (CUSTOMER_CC_TRANSACTIONS)) LIMIT 10
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|"TRANSACTION_ID"  |"TX_DATETIME"          |"CUSTOMER_ID"  |"TERMINAL_ID"  |"TX_AMOUNT"  |"TX_TIME_SECONDS"  |"TX_TIME_DAYS"  |"TX_FRAUD"  |"TX_FRAUD_SCENARIO"  |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|412660            |2018-05-14 00:00:01.0  |851            |9335           |61.65        |3715201            |43              |0           |0                    |
+|412661            |2018-05-14 00:01:46.0  |2462           |8563           |125.74       |3715306            |43              |0           |0                    |
+|412662            |2018-05-14 00:02:22.0  |923            |1514           |97.75        |3715342            |43              |0           |0                    |
+|412663            |2018-05-14 00:03:02.0  |3142           |3268           |11.09        |3715382            |43              |0           |0                    |
+|412664            |2018-05-14 00:03:44.0  |3797           |2609           |111.9        |3715424            |43              |0           |0                    |
+|412665            |2018-05-14 00:04:12.0  |3152           |933            |16.44        |3715452            |43              |0           |0                    |
+|412666            |2018-05-14 00:04:23.0  |258            |4832           |20.73        |3715463            |43              |0           |0                    |
+|412667            |2018-05-14 00:04:25.0  |2775           |8655           |98.86        |3715465            |43              |0           |0                    |
+|412668            |2018-05-14 00:04:32.0  |4197           |9567           |12.09        |3715472            |43              |0           |0                    |
+|412669            |2018-05-14 00:05:14.0  |3779           |782            |144.01       |3715514            |43              |0           |0                    |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+=== CLOSING the session ===
+
+[run-main-0] INFO com.snowflake.snowpark.Session - Closing session: {
+ "snowpark.version" : "0.11.0",
+ "java.version" : "1.8.0_312",
+ "scala.version" : "2.12.13",
+ "jdbc.session.id" : "22095248801435666",
+ "os.name" : "Mac OS X",
+ "jdbc.version" : "3.13.10",
+ "snowpark.library" : "/Users/josh/.ivy2/cache/com.snowflake/snowpark/jars/snowpark-0.11.0.jar",
+ "scala.library" : "/Users/josh/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.13.jar",
+ "jdbc.library" : "/Users/josh/.ivy2/cache/net.snowflake/snowflake-jdbc/jars/snowflake-jdbc-3.13.10.jar"
+}
+[run-main-0] INFO com.snowflake.snowpark.Session - Canceling all running query
+[run-main-0] INFO com.snowflake.snowpark.internal.ServerConnection - Execute query [queryID: 01a24fe6-0501-be68-004e-7f830006d432] select system$cancel_all_queries(22095248801435666)
+[success] Total time: 7 s, completed Feb 14, 2022 3:22:41 PM
